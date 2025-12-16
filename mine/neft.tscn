@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://rggr3784b84h"]
+
+[ext_resource type="Script" uid="uid://ca015tq15wh31" path="res://neft.gd" id="1_2eqpy"]
+[ext_resource type="Texture2D" uid="uid://bnhsnu7akll3e" path="res://sprite/level/neft.png" id="2_erjuu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_skul8"]
+radius = 7.0
+
+[node name="neft" type="Area2D"]
+script = ExtResource("1_2eqpy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_erjuu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_skul8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dr7g42uoq8cur"]
+
+[ext_resource type="Script" uid="uid://cbuqxn8ks083q" path="res://pila.gd" id="1_s0bqx"]
+[ext_resource type="Texture2D" uid="uid://5fkad76a4qxg" path="res://sprite/level/pila2.png" id="2_s0bqx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1md68"]
+radius = 6.0
+
+[node name="pila" type="Area2D" groups=["players"]]
+script = ExtResource("1_s0bqx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["players"]]
+texture = ExtResource("2_s0bqx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["players"]]
+position = Vector2(-16, 0)
+shape = SubResource("CircleShape2D_1md68")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,307 @@
+[gd_scene load_steps=18 format=3 uid="uid://22onaj7402jd"]
+
+[ext_resource type="Script" uid="uid://cpkdscqi5t7on" path="res://main.gd" id="1_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://o508x7ev4oqq" path="res://sprite/level/5470064657810193664.jpg" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://2pk70xakp62p" path="res://sprite/level/circle.png" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://bl8tdjnvdn3pl" path="res://sprite/level/black.png" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://dtultby571fuq" path="res://sprite/menu/play.png" id="5_272bh"]
+[ext_resource type="PackedScene" uid="uid://cl1l51kr283y5" path="res://scene_transition_rect.tscn" id="5_lquwl"]
+[ext_resource type="Texture2D" uid="uid://nlpkfb8ahxdl" path="res://sprite/menu/exit.png" id="6_5vw27"]
+[ext_resource type="AudioStream" uid="uid://basm74issmosx" path="res://mus/28 Atempause (C418 Remix).mp3" id="6_7mycd"]
+[ext_resource type="FontFile" uid="uid://dsibyy78t1gp4" path="res://PixelatedEleganceRegular-ovyAA.ttf" id="9_kek77"]
+
+[sub_resource type="Animation" id="Animation_kek77"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(585, 321)]
+}
+
+[sub_resource type="Animation" id="Animation_5vw27"]
+resource_name = "anim"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(585, 321), Vector2(624.00006, 1062)]
+}
+
+[sub_resource type="Animation" id="Animation_4c57u"]
+resource_name = "anim_2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(624, 1062), Vector2(585, 321)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4c57u"]
+_data = {
+&"RESET": SubResource("Animation_kek77"),
+&"anim": SubResource("Animation_5vw27"),
+&"anim_2": SubResource("Animation_4c57u")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_7mycd"]
+font_size = 38
+font_color = Color(0, 0, 0, 1)
+outline_size = 10
+outline_color = Color(0.61339027, 0.61339027, 0.61339027, 1)
+shadow_size = 10
+shadow_color = Color(0.47007585, 0.47007585, 0.47007585, 0)
+
+[sub_resource type="Animation" id="Animation_272bh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.08560008]
+}
+
+[sub_resource type="Animation" id="Animation_7mycd"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.08560008, -0.039320312, 0.08560008]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5vw27"]
+_data = {
+&"RESET": SubResource("Animation_272bh"),
+&"idle": SubResource("Animation_7mycd")
+}
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_1bvp3")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(1263.5, 1088.2767)
+scale = Vector2(162.93748, 254.59038)
+texture = ExtResource("3_h2yge")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.61745477, 0.61745477, 0.6174547, 1)
+position = Vector2(450.00003, 494)
+scale = Vector2(0.9655172, 1)
+texture = ExtResource("1_ig7tw")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+modulate = Color(0.61745477, 0.61745477, 0.6174547, 1)
+position = Vector2(452, 1448)
+scale = Vector2(0.9655172, 1)
+texture = ExtResource("1_ig7tw")
+flip_v = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(585, 321)
+rotation = 3.0889206
+zoom = Vector2(2, 2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_4c57u")
+}
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(790, 242)
+color = Color(1, 1, 0.654902, 1)
+energy = 2.24
+blend_mode = 2
+texture = ExtResource("2_0xm2m")
+texture_scale = 2.77
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(727, 1700)
+color = Color(1, 1, 0.654902, 1)
+energy = 2.24
+blend_mode = 2
+texture = ExtResource("2_0xm2m")
+texture_scale = 2.77
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(0.72464263, 0.7246426, 0.7246426, 1)
+offset_left = 818.0
+offset_top = 168.0
+offset_right = 890.0
+offset_bottom = 208.0
+scale = Vector2(3, 3)
+icon = ExtResource("5_272bh")
+
+[node name="Button2" type="Button" parent="."]
+modulate = Color(0.737193, 0.7371929, 0.7371929, 1)
+offset_left = 821.0
+offset_top = 333.0
+offset_right = 893.0
+offset_bottom = 373.0
+scale = Vector2(3, 2.831)
+icon = ExtResource("6_5vw27")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 243.0
+offset_top = 535.0
+offset_right = 283.0
+offset_bottom = 558.0
+text = "beta"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 290.0
+offset_top = -11.0
+offset_right = 671.0
+offset_bottom = 204.0
+rotation = 0.08560008
+text = "Adventures of black"
+label_settings = SubResource("LabelSettings_7mycd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Label2"]
+libraries = {
+&"": SubResource("AnimationLibrary_5vw27")
+}
+autoplay = "idle"
+
+[node name="SceneTransitionRect" parent="." instance=ExtResource("5_lquwl")]
+offset_left = -171.00002
+offset_top = -500.99994
+offset_right = 2957.0747
+offset_bottom = 2336.799
+scale = Vector2(0.9939021, 0.9532034)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_7mycd")
+volume_db = 10.0
+autoplay = true
+
+[node name="1" type="Button" parent="."]
+modulate = Color(2.0331757, 2.0331757, 2.0331757, 1)
+offset_left = 184.0
+offset_top = 805.0
+offset_right = 316.00006
+offset_bottom = 836.0
+scale = Vector2(2.2194033, 2.3514245)
+text = "#1 привет, мир"
+alignment = 0
+
+[node name="2" type="Button" parent="."]
+modulate = Color(2.0331757, 2.0331757, 2.0331757, 1)
+offset_left = 186.0
+offset_top = 889.0
+offset_right = 318.0
+offset_bottom = 920.0
+scale = Vector2(2.2194033, 2.3514245)
+text = "#2 Битва с пилами"
+alignment = 0
+
+[node name="3" type="Button" parent="."]
+modulate = Color(2.0331757, 2.0331757, 2.0331757, 1)
+offset_left = 186.0
+offset_top = 973.00006
+offset_right = 346.0
+offset_bottom = 1004.00006
+scale = Vector2(2.2194033, 2.3514245)
+text = "#3 Тёмная пещера"
+alignment = 0
+
+[node name="4" type="Button" parent="."]
+modulate = Color(2.0331757, 2.0331757, 2.0331757, 1)
+offset_left = 186.0
+offset_top = 1056.0
+offset_right = 346.0
+offset_bottom = 1087.0
+scale = Vector2(2.2194033, 2.3514245)
+text = "#4 Шипы 2.7"
+alignment = 0
+
+[node name="5" type="Button" parent="."]
+modulate = Color(2.0331757, 2.0331757, 2.0331757, 1)
+offset_left = 188.0
+offset_top = 1143.0
+offset_right = 348.0
+offset_bottom = 1174.0
+scale = Vector2(2.2194033, 2.3514245)
+text = "#5 Слишком узко"
+alignment = 0
+
+[node name="6" type="Button" parent="."]
+modulate = Color(2.0331757, 2.0331757, 2.0331757, 1)
+offset_left = 188.0
+offset_top = 1216.0
+offset_right = 348.0
+offset_bottom = 1247.0
+scale = Vector2(2.2194033, 2.3514245)
+text = "#6 Плохие грибы"
+alignment = 0
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 144.0
+offset_top = 101.0
+offset_right = 216.0
+offset_bottom = 155.0
+text = "полный 
+экран"
+
+[node name="Button4" type="Button" parent="."]
+offset_left = 146.0
+offset_top = 162.0
+offset_right = 213.0
+offset_bottom = 207.0
+text = "окно"
+
+[node name="Button5" type="Button" parent="."]
+modulate = Color(18.712564, 0, 0, 1)
+offset_left = 905.0
+offset_top = 805.0
+offset_right = 1035.0
+offset_bottom = 881.0
+theme_override_fonts/font = ExtResource("9_kek77")
+theme_override_font_sizes/font_size = 40
+text = "назад"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="1" to="." method="_on_level1_pressed"]
+[connection signal="pressed" from="2" to="." method="_on_level2_pressed"]
+[connection signal="pressed" from="3" to="." method="_on_level3_pressed"]
+[connection signal="pressed" from="4" to="." method="_on_level4_pressed"]
+[connection signal="pressed" from="5" to="." method="_on_level5_pressed"]
+[connection signal="pressed" from="6" to="." method="_on_level6_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_poln_pressed"]
+[connection signal="pressed" from="Button4" to="." method="_on_notpoln_pressed"]
+[connection signal="pressed" from="Button5" to="." method="_on_nazat_pressed"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://2yl1lpa8hurr"]
+
+[ext_resource type="Script" uid="uid://cfq1lbcvfg1xx" path="res://pautina.gd" id="1_m7nbo"]
+[ext_resource type="Texture2D" uid="uid://c5pefb6f11dsu" path="res://sprite/level/pautina.png" id="1_s010e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m7nbo"]
+radius = 7.0
+
+[node name="pautina" type="Area2D" groups=["players"]]
+script = ExtResource("1_m7nbo")
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["players"]]
+texture = ExtResource("1_s010e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["players"]]
+shape = SubResource("CircleShape2D_m7nbo")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
