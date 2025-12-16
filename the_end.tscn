@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://dj6ujrblhactm"]
+
+[ext_resource type="Texture2D" uid="uid://batifb33oywkk" path="res://sprite/level/5472214585294587146.jpg" id="1_eqkr4"]
+[ext_resource type="Script" uid="uid://6y2p10bg2t" path="res://the_end.gd" id="2_7hgbx"]
+[ext_resource type="Texture2D" uid="uid://bl8tdjnvdn3pl" path="res://sprite/level/black.png" id="2_keutu"]
+[ext_resource type="AudioStream" uid="uid://basm74issmosx" path="res://mus/28 Atempause (C418 Remix).mp3" id="4_08u7m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_keutu"]
+font_size = 50
+
+[node name="The End" type="Sprite2D"]
+position = Vector2(282, 589)
+texture = ExtResource("1_eqkr4")
+script = ExtResource("2_7hgbx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1151, -1)
+scale = Vector2(107.75844, -426.7599)
+texture = ExtResource("2_keutu")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 605.0
+offset_top = -587.0
+offset_right = 1096.0
+offset_bottom = 490.0
+text = "Спасибо большое:
+Макс
+Илья
+Владимир Вотинов
+Thug Life
+Каштановый бард
+ладно я ...
+Олег сантехник
+саня(гав)
+СОЛНЫШКО
+sllllllllll
+Wexss
+Hionia
+Ztepline
+shishkin"
+label_settings = SubResource("LabelSettings_keutu")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1226.9998
+offset_top = -99.00006
+offset_right = 1280.9998
+offset_bottom = -68.00006
+scale = Vector2(6.920002, 6.16)
+text = "меню"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_08u7m")
+volume_db = 10.0
+autoplay = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
