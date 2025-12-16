@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://duujo6oiu8gk2"]
+
+[ext_resource type="Script" uid="uid://7rmwxnxt107s" path="res://put_5.gd" id="1_vuyl8"]
+[ext_resource type="Texture2D" uid="uid://cfe5qdey6jp3f" path="res://sprite/level/put.png" id="2_a6vag"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qmhck"]
+radius = 8.0
+
+[node name="Put5" type="Area2D" groups=["players"]]
+script = ExtResource("1_vuyl8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["players"]]
+texture = ExtResource("2_a6vag")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["players"]]
+shape = SubResource("CircleShape2D_qmhck")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
