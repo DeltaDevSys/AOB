@@ -1,0 +1,19 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bh6koox3j3dfd"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_busjg"]
+load_path = "res://.godot/imported/atlas_floor-16x16.png-d54d6f263c8ae2994fa5f7f0f0919753.ctex"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vonw3"]
+texture = SubResource("CompressedTexture2D_busjg")
+0:1/0 = 0
+1:1/0 = 0
+1:0/0 = 0
+6:2/0 = 0
+6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:3/0 = 0
+0:0/0 = 0
+
+[resource]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_vonw3")

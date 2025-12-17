@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvdebru4w8os7"]
+
+[ext_resource type="Texture2D" uid="uid://c74jngkf6w3wk" path="res://sprite/level/grib.png" id="1_5a6as"]
+[ext_resource type="Script" uid="uid://bh7bsqfexfnq" path="res://grib.gd" id="1_h6qgb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h6qgb"]
+radius = 716.1927
+
+[node name="Grib" type="Area2D"]
+script = ExtResource("1_h6qgb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5a6as")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_h6qgb")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

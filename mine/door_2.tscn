@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://dp2rmvv6ydoss"]
+
+[ext_resource type="Script" uid="uid://dy8403ts12tcx" path="res://door_2.gd" id="1_euxko"]
+[ext_resource type="Texture2D" uid="uid://bsdvbqnkxc6tu" path="res://sprite/level/door.png" id="2_q5asl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v6xrn"]
+size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_q5asl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.9685872, 5.679429e-06, 7.70092e-07, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_euxko"]
+resource_name = "open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.9685872, 5.679429e-06, 7.70092e-07, 1), Color(0.9529412, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v8qia"]
+_data = {
+&"RESET": SubResource("Animation_q5asl"),
+&"open": SubResource("Animation_euxko")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_euxko"]
+radius = 60.00833
+
+[node name="door2" type="StaticBody2D" groups=["players"]]
+script = ExtResource("1_euxko")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["players"]]
+shape = SubResource("RectangleShape2D_v6xrn")
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["players"]]
+modulate = Color(0.9685872, 5.679429e-06, 7.70092e-07, 1)
+texture = ExtResource("2_q5asl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_v8qia")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_euxko")
+
+[connection signal="animation_finished" from="Sprite2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
